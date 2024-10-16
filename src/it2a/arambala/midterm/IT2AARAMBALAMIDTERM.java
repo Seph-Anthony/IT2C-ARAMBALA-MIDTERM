@@ -17,7 +17,11 @@ public class IT2AARAMBALAMIDTERM {
         Scanner in = new Scanner (System.in);
         int choice =0;
         IT2AARAMBALAMIDTERM pres = new IT2AARAMBALAMIDTERM();
+        String another = null;
         
+        
+        
+        do{
         System.out.println("WELCOME TO PRESCRIPTION SYSTEM\n");
         System.out.print("1. ADD PRESCRIPTION\n");
          System.out.print("2. VIEW PRESCRIPTION\n ");
@@ -50,19 +54,58 @@ public class IT2AARAMBALAMIDTERM {
               
               
           }
+          
+          System.out.print("INPUT ANOTHER PRESCRIPTION (Yes|No):");
+        another = in.nextLine();
+        
+
+        
+        while(!another.equalsIgnoreCase("yes ") && !another.equalsIgnoreCase("Yes") && !another.equalsIgnoreCase("YES") && !another.equalsIgnoreCase("no")
+              &&  !another.equalsIgnoreCase("NO") && !another.equalsIgnoreCase("No")){
+            
+            System.out.print(" |INPUT INVALID| \n Try again: ");
+            another=in.nextLine();
+        
+        
+        }
+          
+        }while(another.equals("yes") || another.equals("Yes") || another.equals("YES"));
+        
         
         
         
         
     }
-    
+    int price = 0;
+//    while (true) {
+//    System.out.print("PRODUCT PRICE: ");
+//String priceinput = in.nextLine().trim();
+//    
+//try{
+//    price = Double.parseDouble(priceinput);
+//    if(price >= 0){
+//        break;
+//    }
+//    
+//    else {
+//        
+//        System.out.println("Product Price should not be a negative: ");
+//    }
+//    
+//    
+//}
+//catch (NumberFormatException e){
+//    System.out.println("Product Price Invalid");
+//    
+//}
+//    
     public void addpres(){
         Scanner in = new Scanner (System.in);
         config conf = new config();
         
         String date = null;
         String name = null;
-        String dosage = null;
+        int dosage = 0;
         String another = null;
         do {
         
@@ -72,15 +115,35 @@ public class IT2AARAMBALAMIDTERM {
         System.out.print("Enter the Medication Name: ");
          name = in.nextLine();
         
+         while(true){
         System.out.print("Enter the dosage: ");
-         dosage = in.next();
+         String dosageInput = in.nextLine().trim();
          
+         try{
+    dosage = Integer.parseInt(dosageInput);
+    if(dosage >= 0){
+        break;
+    }
+    
+    else {
+        
+        System.out.println("Dosage should not be a negative: ");
+    }
+    
+    
+}
+catch (NumberFormatException e){
+    System.out.println("Product Price Invalid");
+    
+}
+         
+         }
                 String sql = "INSERT INTO Prescription ( prescription_date, medication_name,  dosage) VALUES (?, ?, ?)";
 
         
         conf.addRecord(sql, name,dosage , dosage);
          
-         System.out.print("INPUT ANOTHER PRODUCT (Yes|No):");
+         System.out.print("INPUT ANOTHER PRESCRIPTION (Yes|No):");
         another = in.nextLine();
         
 
@@ -110,12 +173,13 @@ public class IT2AARAMBALAMIDTERM {
          Scanner in = new Scanner (System.in);
          String date = null;
          String name = null;
-         String dosage = null;
-         
+         int dosage = 0;
+         String another = null;
          config confi = new config();
          
          IT2AARAMBALAMIDTERM pres = new IT2AARAMBALAMIDTERM();
          
+         do{
           pres.viewpres();
           System.out.print("Enter the ID you want to Update: ");
           int id = in.nextInt();
@@ -127,8 +191,28 @@ public class IT2AARAMBALAMIDTERM {
         System.out.print("Enter the new Medication Name: ");
          name = in.nextLine();
         
-        System.out.print("Enter the new dosage: ");
-         dosage = in.next();
+           while(true){
+        System.out.print("Enter the dosage: ");
+         String dosageInput = in.nextLine().trim();
+         
+         try{
+    dosage = Integer.parseInt(dosageInput);
+    if(dosage >= 0){
+        break;
+    }
+    
+    else {
+        
+        System.out.println("Dosage should not be a negative: ");
+    }
+    
+    
+}
+catch (NumberFormatException e){
+    System.out.println("Product Price Invalid");
+    
+}
+           }
          
                 
                 String sql = "UPDATE Prescription SET prescription_date = ?, medication_name = ?, dosage = ? WHERE prescription_id = ?";
@@ -136,7 +220,22 @@ public class IT2AARAMBALAMIDTERM {
                 
                 confi.updateRecord(sql, date, name, dosage, id);
                 
+                
+         System.out.print("UPDATE ANOTHER PRESCRIPTION (Yes|No):");
+        another = in.nextLine();
+                
+                while(!another.equalsIgnoreCase("yes") && !another.equalsIgnoreCase("Yes") && !another.equalsIgnoreCase("YES") && !another.equalsIgnoreCase("no")
+              &&  !another.equalsIgnoreCase("NO") && !another.equalsIgnoreCase("No")){
+            
+            System.out.print(" |INPUT INVALID| \n Try again: ");
+            another=in.nextLine();
+                }
+                
+         }while(another.equals("yes") || another.equals("Yes") || another.equals("YES"));
      }
+         
+         
+         
      
      public void deletepres(){
          
@@ -147,6 +246,9 @@ public class IT2AARAMBALAMIDTERM {
              IT2AARAMBALAMIDTERM pres = new IT2AARAMBALAMIDTERM();
           pres.viewpres();
           
+          
+          
+          do{
           System.out.print("Enter the ID you want to delete: ");
         
           
@@ -163,6 +265,17 @@ public class IT2AARAMBALAMIDTERM {
           
           del.deleteRecord(deleteSQL, id);
           
+           System.out.print("UPDATE ANOTHER PRESCRIPTION (Yes|No):");
+        another = in.nextLine();
+                
+                while(!another.equalsIgnoreCase("yes") && !another.equalsIgnoreCase("Yes") && !another.equalsIgnoreCase("YES") && !another.equalsIgnoreCase("no")
+              &&  !another.equalsIgnoreCase("NO") && !another.equalsIgnoreCase("No")){
+            
+            System.out.print(" |INPUT INVALID| \n Try again: ");
+            another=in.nextLine();
+          
+                }
+          }while(another.equals("yes") || another.equals("Yes") || another.equals("YES"));
          
          
      
