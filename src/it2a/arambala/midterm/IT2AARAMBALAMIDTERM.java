@@ -23,10 +23,12 @@ public class IT2AARAMBALAMIDTERM {
         
         do{
         System.out.println("WELCOME TO PRESCRIPTION SYSTEM\n");
+            System.out.println("___________________________\n");
         System.out.print("1. ADD PRESCRIPTION\n");
          System.out.print("2. VIEW PRESCRIPTION\n ");
          System.out.print("3. UPDATE PRESCRIPTION\n ");
          System.out.print("4. DELETE PRESCRIPTION\n");
+            System.out.println("____________________________\n");
          
           System.out.print("Enter a choice:  ");
           choice = in.nextInt();
@@ -77,28 +79,7 @@ public class IT2AARAMBALAMIDTERM {
         
     }
     int price = 0;
-//    while (true) {
-//    System.out.print("PRODUCT PRICE: ");
-//String priceinput = in.nextLine().trim();
-//    
-//try{
-//    price = Double.parseDouble(priceinput);
-//    if(price >= 0){
-//        break;
-//    }
-//    
-//    else {
-//        
-//        System.out.println("Product Price should not be a negative: ");
-//    }
-//    
-//    
-//}
-//catch (NumberFormatException e){
-//    System.out.println("Product Price Invalid");
-//    
-//}
-//    
+
     public void addpres(){
         Scanner in = new Scanner (System.in);
         config conf = new config();
@@ -112,6 +93,8 @@ public class IT2AARAMBALAMIDTERM {
         System.out.print("Enter the Prescription Date: ");
        date = in.nextLine();
         
+       
+       
         System.out.print("Enter the Medication Name: ");
          name = in.nextLine();
         
